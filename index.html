@@ -39,18 +39,22 @@
 
   <!-- Chatwoot widget integration -->
   <script>
-    window.chatwootSettings = {
-      "websiteToken": "your-website-token", // Replace with your Chatwoot website token
-      "inboxToken": "your-inbox-token", // Replace with your Chatwoot inbox token
-      "baseUrl": "https://app.chatwoot.com" // Your Chatwoot instance URL
-    };
-
     (function(d,t) {
-      var BASE_URL = window.chatwootSettings.baseUrl;
-      var g = d.createElement(t); g.src = BASE_URL + "/packs/js/sdk.js"; g.async = true;
-      var s = d.getElementsByTagName(t)[0]; s.parentNode.insertBefore(g, s);
-    })(document, "script");
+      var BASE_URL="http://0.0.0.0:3000";
+      var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=BASE_URL+"/packs/js/sdk.js";
+      g.defer = true;
+      g.async = true;
+      s.parentNode.insertBefore(g,s);
+      g.onload=function(){
+        window.chatwootSDK.run({
+          websiteToken: 'YSJ3ky3YMmuc9a7MqRrPHmsA',
+          baseUrl: BASE_URL
+        })
+      }
+    })(document,"script");
   </script>
+  
 
   <!-- Bootstrap JS and Popper.js -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybW4d8b8WyyE6zV06P0I3BdZhKkm9l4y5aE7cLVoE5B8xRSN9" crossorigin="anonymous"></script>
